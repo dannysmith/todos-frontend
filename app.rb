@@ -10,7 +10,6 @@ class DemoApp < Sinatra::Base
 
   get '/' do
     @todos = call_api('/')
-    binding.pry
     erb :index
   end
 
@@ -21,5 +20,10 @@ class DemoApp < Sinatra::Base
   get '/:id' do |id|
     @todo = call_api("/#{id}")
     erb :todo
+  end
+
+  get '/delete/:id' do |id|
+    HTTParty.delete "http://lacedeamon.spartaglobal.com/todos/#{id}"
+    redirect '/'
   end
 end

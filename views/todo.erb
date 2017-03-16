@@ -1,3 +1,6 @@
 <h1><%= @todo['title'] %></h1>
 
 <p>Due: <%= @todo['due'].to_s %></p>
+<p>Created: <%= @todo['created_at'].to_s %></p>
+
+<a href="/delete/<%= @todo['id'] %>">Delete This</a>
